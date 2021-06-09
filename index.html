@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喜羊羊</title>
+    <style>
+        body {
+            min-width: 1250px;
+        }
+
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .head {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .logo {
+            width: 14%;
+            float: left;
+        }
+
+        .logo img {
+            margin-left: 35px;
+        }
+
+        .nav {
+            margin-top: 8px;
+            padding-left: 0;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        .item1 a {
+            margin-right: 20px;
+            font-size: 20px;
+            color: white;
+        }
+
+        .item2 {
+            width: 75px;
+            height: 20px;
+            background: url(./images/illustration1.png) -230px -23px;
+        }
+
+        .item2 a {
+            margin-left: 20px;
+            font-size: 15px;
+            color: grey;
+        }
+
+        .item3 a {
+            margin-right: 20px;
+            font-size: 18px;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .item:hover {
+            color: orange;
+        }
+
+        .search {
+            width: 20%;
+            height: 30px;
+            background: url(images/search\ box.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            float: right;
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        #searchText {
+            background: none;
+            outline: none;
+            border: 0;
+            color: gray;
+            width: 60%;
+            padding-left: 10px;
+            font-size: 15px;
+        }
+
+        .content {
+            width: 90%;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content_l {
+            width: 60%;
+            height: 600px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .main {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .btns {
+            font-size: 16px;
+        }
+
+        .btns a {
+            color: orange;
+        }
+
+        .content_r {
+            width: 30%;
+            margin-top: 60px;
+        }
+
+        @keyframes animation1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #CD {
+            position: relative;
+            width: 80%;
+            height: 270px;
+            margin: 0 auto;
+            border-radius: 50%;
+
+        }
+
+        #CD div:nth-child(1) {
+            position: absolute;
+            width: 100%;
+            height: 270px;
+            border-radius: 50%;
+            border: 1px solid rgba(128, 128, 128, 0.5);
+        }
+
+        #CD img {
+            position: absolute;
+            margin-left: 8px;
+            margin-top: 8px;
+            width: 95%;
+            border-radius: 50%;
+        }
+
+        #CD div:nth-child(3) {
+            position: absolute;
+            margin-left: 105px;
+            margin-top: 105px;
+            width: 25%;
+            height: 67.5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(128, 128, 128, 0.5);
+            border-radius: 50%;
+        }
+
+        #CD div:nth-child(4) {
+            position: absolute;
+            margin-left: 127px;
+            margin-top: 127px;
+            width: 10%;
+            height: 27px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .player {
+            margin-top: 20px;
+            height: 50px;
+        }
+
+        #wp_playBtn {
+            cursor: pointer;
+        }
+
+        .play {
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: url(images/illustration2.jpg) -110px 0;
+        }
+
+        .play:hover {
+            background-position: -162px 0;
+        }
+
+        .zan {
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: url(images/illustration2.jpg) -207.5px 0;
+        }
+
+        .zan:hover {
+            background-position: -207.5px -48px;
+        }
+
+        #prograssBar {
+            float: left;
+            position: relative;
+            width: 60%;
+            height: 4px;
+            margin: 15px 0;
+            display: inline;
+            background: rgba(128, 128, 128, 0.5);
+            border-radius: 2px;
+        }
+
+        #wp_bufBar {
+            width: 0px;
+            height: 4px;
+        }
+
+        .prograssBar {
+            width: 0px;
+            height: 4px;
+            background: #ffcd2d;
+        }
+
+        #wp_processBtn {
+            width: 10px;
+            height: 10px;
+            background: url(images/illustration1.png) 0 -128px;
+            position: absolute;
+            top: -3px;
+        }
+
+        #wp_playTime {
+            float: left;
+            margin: 10px 5px 10px 15px;
+            font-size: 12px;
+            color: rgba(128, 128, 128, 0.8);
+            display: inline;
+        }
+
+        #wp_mute {
+            cursor: pointer;
+        }
+
+        .sound {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: url(images/illustration2.jpg) -44px 0;
+            margin: 10px 5px;
+        }
+
+        .sound:hover {
+            background-position: -69px 0;
+        }
+
+        .download {
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            height: 50px;
+        }
+
+        .oval {
+            position: absolute;
+            width: 150px;
+            height: 43px;
+            margin: 0 70px;
+            background: url(images/illustration2.jpg) 0 -45px;
+            padding-left: 55px;
+            line-height: 43px;
+            color: black;
+        }
+
+        .download_icon {
+            position: absolute;
+            width: 19px;
+            height: 18px;
+            margin: 12px 100px;
+            background: url(images/illustration2.jpg) 0 0;
+        }
+
+        .sender img {
+            float: left;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .text {
+            width: 73%;
+            background-color: rgba(121, 105, 211, 0.2);
+            float: left;
+            margin: 20px 15px;
+            padding: 10px 10px 10px 0;
+            border-radius: 10px;
+        }
+
+        .left_triangle {
+            height: 0;
+            width: 0;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent rgba(121, 105, 211, 0.2) transparent transparent;
+            position: relative;
+            left: -16px;
+            top: 3px;
+        }
+
+        .text div:nth-child(2) {
+            color: grey;
+            margin: -20px 0 0 15px;
+        }
+
+        .text div:nth-child(4) {
+            float: left;
+            width: 60%;
+            margin: -10px 0 0 15px;
+        }
+
+        .text img{
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+
+        .text a {
+            float: right;
+            width: 30%;
+            margin-top: -10px;
+        }
+
+        #comment {
+            margin: 0 auto;
+            width: 70%;
+            height: 660px;
+        }
+
+        .type1 {
+            margin: 50px 0 10px 10px;
+        }
+
+        .num {
+            margin-left: 10px;
+            font-size: 15px;
+            color: grey;
+        }
+
+        .myComment {
+            margin: 10px 0 0 20px;
+        }
+
+        .myComment img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .myComment div:nth-child(2) {
+            width: 94%;
+            float: right;
+        }
+
+        #myCommentText {
+            outline: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 95%;
+            font-size: 15px;
+            margin: 10px 0 0 10px;
+            padding: 10px 0 80px 10px;
+        }
+
+        .extra {
+            margin-top: 5px;
+            width: 92%;
+            float: right;
+        }
+
+        .extra span:nth-child(1) {
+            cursor: pointer;
+        }
+
+        .extra span:nth-child(3) {
+            float: right;
+            margin: 5px 10px 0 0;
+            font-size: 15px;
+        }
+
+        .extra button {
+            width: 80px;
+            height: 30px;
+            float: right;
+            margin-right: 30px;
+            background-color: #ffcd2d;
+            color: white;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .type2 {
+            margin: 130px 0 10px 10px;
+        }
+
+        .allComment {
+            height: 280px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .eachComment {
+            height: 80px;
+            margin: 10px 0 0 20px;
+        }
+
+        .eachComment img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .eachComment div {
+            width: 93%;
+            float: right;
+        }
+
+        .first a:nth-child(1) {
+            color: #ffcd2d;
+        }
+
+        .first a:nth-child(2) {
+            float: right;
+            margin-right: 30px;
+            color: grey;
+            font-size: 15px;
+        }
+
+        .second {
+            margin-top: -25px;
+        }
+
+        .third {
+            margin: 5px 0;
+        }
+
+        .commentTime {
+            color: grey;
+            font-size: 12px;
+        }
+
+        .third a {
+            float: right;
+            margin-right: 30px;
+            color: black;
+        }
+
+        .third img{
+            width: 20px;
+            height: 20px;
+            float: right;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .lines {
+            border: none;
+            border-top: 1px solid rgba(204, 204, 204, 0.5);
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .pageBox {
+            display: flex;
+            text-align: center;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pageDir {
+            width: 42px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            cursor: pointer;
+            list-style: none;
+            background-color: rgba(204, 204, 204, 0.5);
+            border-radius: 50%;
+            margin: 5px;
+        }
+
+        .pageDir:hover {
+            background-color: #ffcd2d;
+            color: white;
+        }
+
+        .page {
+            display: flex;
+            list-style: none;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .page li {
+            width: 42px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            cursor: pointer;
+            background-color: rgba(204, 204, 204, 0.5);
+            border-radius: 50%;
+            margin: 5px;
+        }
+
+        .page li:hover {
+            background-color: #ffcd2d;
+            color: white;
+        }
+
+        #currentPage {
+            background-color: #ffcd2d;
+            color: white;
+        }
+
+        #ellipsis1 {
+            line-height: 32px;
+            background-color: white;
+            cursor: default;
+        }
+
+        #ellipsis2 {
+            line-height: 32px;
+            background-color: white;
+            cursor: default;
+        }
+
+        #ellipsis1:hover {
+            color: black;
+        }
+
+        #ellipsis2:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="head">
+            <div class="logo"><img src="images/logo.jpg" /></div>
+            <ul class="nav">
+                <li class="item1"><a href="#" class="item">首页</a></li>
+                <li class="item1"><a href="#" class="item">榜单</a></li>
+                <li class="item1"><a href="#" class="item">歌手</a></li>
+                <li class="item1"><a href="#" class="item">下载客户端</a></li>
+                <li class="item2"><a href="#" class="item">美女秀</a></li>
+                <li class="item2" style="width: 90px;"><a href="#" class="item">酷我耳机</a></li>
+                <li class="item2" style="width: 90px;"><a href="#" class="item">VIP会员</a></li>
+                <li class="item2"><a href="#" class="item">i听</a></li>
+                <li class="item3"><a href="#" class="item">更多服务</a></li>
+                <li class="item3"><a href="#" class="item">登录</a></li>
+                <li class="item3"><a href="#" id="icon">V</a></li>
+            </ul>
+            <div class="search"><input id="searchText" type="text" placeholder="找到好音乐"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content_l">
+            <div class="title">
+                <p style="font-size: 25px;">喜羊羊</p>
+                <p class="btns">专辑：<a href="#">儿歌大全</a>&nbsp;
+                    歌手：<a href="#">华语群星</a>&nbsp;
+                    <a href="#" style="color: black;">分享</a>&nbsp;
+                    <a href="#"><img src="images/comment.jpg" />&nbsp;评论</a>
+                </p>
+                <p style="font-size: 15px;">上传时间：2015-10-02&nbsp;&nbsp;歌曲来源：民大相思湖网球社</p>
+            </div>
+            <hr />
+            <div class="main">
+                <p>喜羊羊美羊羊懒羊羊沸羊羊</p>
+                <p>慢羊羊软绵绵红太狼灰太狼</p>
+                <p>别看我只是一只羊</p>
+                <p>绿草因为我变的更香</p>
+                <p>天空因为我变的更蓝</p>
+                <p>白云因为我变的柔软</p>
+                <p>别看我只是一只羊</p>
+                <p>羊儿的聪明难以想像</p>
+                <p>天再高心情一样奔放</p>
+                <p>每天都追赶太阳</p>
+                <p>有什么难题去牵绊我都不会去心伤</p>
+                <p>有什么危险在我面前也不会去慌乱</p>
+                <p>就算有狼群把我追捕也当做游戏一场</p>
+                <p>在什么时间都爱开心笑容都会飞翔</p>
+                <p>就算会摔倒站得起来永远不会沮丧</p>
+                <p>在所有天气拥有叫人大笑的力量</p>
+                <p>虽然我只是羊</p>
+            </div>
+        </div>
+        <div class="content_r">
+            <div id="CD">
+                <div></div>
+                <div><img src="images/cd rom.jpg" /></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="player">
+                <audio autoplay="autoplay" id="mymusic">
+                    <source src="别看我只是一只羊.mp3" type="audio/mp3">
+                </audio>
+                <div class="play" id="wp_playBtn"></div>
+                <div id="prograssBar">
+                    <div id="wp_bufBar">
+                        <div class="prograssBar" id="wp_processBar"></div>
+                        <a href="#" class="schedule_btn" id="wp_processBtn" style="left: 0;"></a>
+                    </div>
+                </div>
+                <p id="wp_playTime" class="opacity">00:00</p>
+                <div class="sound" id="wp_mute"></div>
+            </div>
+            <div class="download">
+                <a href="#">
+                    <div class="oval">免费下载这首歌</div>
+                    <div class="download_icon"></div>
+                </a>
+            </div>
+            <div class="sender">
+                <img src="images/photo.jpg" />
+                <div class="text">
+                    <div class="left_triangle"></div>
+                    <div>郭子仪——H5班</div><br />
+                    <div>
+                        <img src="images/唱歌.png">
+                        喜羊羊与灰太狼
+                    </div>
+                    <a href="#">去现场&nbsp;></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="comment">
+        <div class="type1">
+            <span>评论</span>
+            <span class="num">3条评论</span>
+        </div>
+        <hr />
+        <div class="myComment">
+            <img src="images/photo.jpg" id="photo" />
+            <div>
+                <input id="myCommentText" type="text" placeholder="分享你的音乐见解"
+                onKeyUp="keypress()" onblur="keypress()">
+            </div>
+            <div class="extra">
+                <span>&#9786</span>
+                <button type="button" id="myBtn">评论</button>
+                <span id="show">已输入0个字</span>
+            </div>
+        </div>
+        <div class="type2">精彩评论</div>
+        <hr />
+        <div id="allComment1" class="allComment">
+            <div class="eachComment" id="old1">
+                <img src="images/default avatar.jpg" />
+                <div class="first">
+                    <a href="#">亚里士多德</a>
+                    <a href="#">分享</a>
+                </div>
+                <div class="second"><span>好听</span></div>
+                <div class="third">
+                    <span class="commentTime">2017-03-14&nbsp;16:33:33</span>
+                    <a href="#">回复</a>
+                    <img src="images/点赞1.png" id="good1"/>
+                </div>
+                <hr class="lines" />
+            </div>
+            <div class="eachComment" id="old2">
+                <img src="images/default avatar.jpg" />
+                <div class="first">
+                    <a href="#">王君一</a>
+                    <a href="#">分享</a>
+                </div>
+                <div class="second"><span>很好听</span></div>
+                <div class="third">
+                    <span class="commentTime">2017-03-14&nbsp;16:33:33</span>
+                    <a href="#">回复</a>
+                    <img src="images/点赞1.png" id="good2" />
+                </div>
+                <hr class="lines" />
+            </div>
+            <div class="eachComment" id="old3">
+                <img src="images/default avatar.jpg" />
+                <div class="first">
+                    <a href="#">王肖琑</a>
+                    <a href="#">分享</a>
+                </div>
+                <div class="second"><span>超级好听</span></div>
+                <div class="third">
+                    <span class="commentTime">2017-03-14&nbsp;16:33:33</span>
+                    <a href="#">回复</a>
+                    <img src="images/点赞1.png" id="good3" />
+                </div>
+                <hr class="lines" />
+            </div>
+        </div>
+        <div class="pageBox">
+            <li class="pageDir" id="previous">&lt;</li>
+            <ul class="page">
+                <li id="currentPage">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li id="ellipsis1">...</li>
+                <li id="last">6</li>
+            </ul>
+            <li class="pageDir" id="next">&gt;</li>
+        </div>
+    </div>
+</body>
+<script>
+    var icon = document.getElementById("icon");
+    var mymusic = document.getElementById("mymusic");
+    var wp_playBtn = document.getElementById("wp_playBtn");
+    var wp_mute = document.getElementById("wp_mute");
+    var wp_processBtn = document.getElementById("wp_processBtn");
+    var prograssBar = document.getElementsByClassName("prograssBar")[0];
+    var wp_playTime = document.getElementById("wp_playTime");
+    var CD = document.getElementById("CD");
+    var comment = document.getElementById("comment");
+    var myBtn = document.getElementById("myBtn");
+    var allComment1 = document.getElementById("allComment1");
+    var photo = document.getElementById("photo");
+    var commentText = document.getElementById("myCommentText");
+    var num = document.getElementsByClassName("num")[0];
+    var allCommentOld;
+    var allCommentNew;
+    var second = 0;
+    var middle = 0;
+    var time = 0;
+    var rotateVal = 0;
+    var interVal;
+    var timeStr;
+
+    //导航
+    icon.onmouseover = function () {
+        icon.innerHTML = "&#923";
+        icon.style.color = "orange";
+    }
+    icon.onmouseout = function () {
+        icon.innerHTML = "V";
+        icon.style.color = "white";
+    }
+
+    //音乐播放
+    mymusic.autoplay = false;
+
+    wp_playBtn.onclick = function () {
+        if (mymusic.paused) {
+            mymusic.play();
+            wp_playBtn.setAttribute("class", "zan");
+            rotate();
+            mymusic.ontimeupdate = function () {
+                middle = 0;
+                second = parseInt(mymusic.currentTime);
+                if (second > 60 && second <= 168) {
+                    middle = parseInt(second / 60);
+                    second = parseInt(second % 60);
+                }
+                if (second > 168) {
+                    mymusic.pause();
+                    wp_playBtn.setAttribute("class", "play");
+                    clearInterval(interVal);
+                }
+                middle = (middle < 10) ? ("0" + middle) : (middle);
+                second = (second < 10) ? ("0" + second) : (second);
+                wp_playTime.innerHTML = middle + ":" + second;
+                time = mymusic.currentTime / mymusic.duration;
+                wp_processBtn.style.left = time * 100 + "%";
+                prograssBar.style.width = time * 203 + "px";
+            }
+        }
+        else {
+            mymusic.pause();
+            wp_playBtn.setAttribute("class", "play");
+            clearInterval(interVal);
+        }
+    }
+
+    //CD旋转
+    function rotate() {
+        interVal = setInterval(function () {
+            rotateVal += 1;
+            CD.style.transform = "rotate(" + rotateVal + "deg)";
+            CD.style.transition = "0.1s linear";
+        }, 100);
+    }
+
+    //静音
+    wp_mute.onclick = function () {
+        if (mymusic.muted) {
+            mymusic.muted = false;
+        }
+        else {
+            mymusic.muted = true;
+        }
+    }
+
+    //获取评论框输入字数
+    function keypress() {
+        var myCommentText = document.getElementById("myCommentText").value;
+        var show = "已输入" + myCommentText.length + "个字";
+        document.getElementById("show").innerHTML = show;
+    }
+
+    //点赞
+    for(var j = 0;j<3;j++){
+        !function(j){
+            var good = document.getElementById("good"+(j+1));
+            console.log("good"+j);
+            good.onclick = function(){
+                good.src="images/点赞2.png";
+            }
+        }(j);
+    }
+
+    //获取时间
+    function getTime() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth();
+        var date = now.getDate();
+        var hours = (now.getHours() < 10) ? ("0" + now.getHours()) : (now.getHours());
+        var minutes = (now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes());
+        var seconds = (now.getSeconds() < 10) ? ("0" + now.getSeconds()) : (now.getSeconds());
+        timeStr = year + "-" + (month + 1) + "-" + date + "  " + hours + ":" + minutes + ":" + seconds;
+    }
+
+    //获取评论中的内容
+    function comContent(i) {
+        var record = localStorage['record'];
+        record = JSON.parse(record);
+        var divNode = document.createElement("div");
+        divNode.setAttribute("class", "eachComment");
+        //头像
+        var imgPhoto = document.createElement("img");
+        imgPhoto.setAttribute("src", record[i]['picture']);
+        divNode.appendChild(imgPhoto);
+        //姓名
+        var divFirst = document.createElement("div");
+        divFirst.setAttribute("class", "first");
+        divNode.appendChild(divFirst);
+        var aName = document.createElement("a");
+        aName.setAttribute("href", "#");
+        var nameText = document.createTextNode(record[i]['name']);
+        aName.appendChild(nameText);
+        divFirst.appendChild(aName);
+        var aShare = document.createElement("a");
+        aShare.setAttribute("href", "#");
+        var shareText = document.createTextNode("分享");
+        aShare.appendChild(shareText);
+        divFirst.appendChild(aShare);
+        //内容
+        var divSecond = document.createElement("div");
+        divSecond.setAttribute("class", "second");
+        divSecond.innerHTML = "<span>" + record[i]['divContent'] + "</span>";
+        divNode.appendChild(divSecond);
+        //时间
+        var divThird = document.createElement("div");
+        divThird.setAttribute("class", "third");
+        divThird.innerHTML = "<span class='commentTime'>" + record[i]['timer'] + "</span>";
+
+        var aReply = document.createElement("a");
+        aReply.setAttribute("href", "#");
+        var replyText = document.createTextNode("回复");
+        aReply.appendChild(replyText);
+        divThird.appendChild(aReply);
+        var dianzan = document.createElement("img");
+        dianzan.src="images/点赞1.png";
+        dianzan.setAttribute("id","good"+(i%3+1));
+        divThird.appendChild(dianzan);
+        var cut = document.createElement("a");
+        cut.setAttribute("href","#");
+        cut.style.float="right";
+        cut.style.color="purple";
+        cut.style.margin="0 5px";
+        var cutText = document.createTextNode("删除");
+        cut.appendChild(cutText);
+        divThird.appendChild(cut);
+        divNode.appendChild(divThird);
+        //横线
+        var line = document.createElement("hr");
+        line.setAttribute("class", "lines");
+        divNode.appendChild(line);
+
+        allComment1.appendChild(divNode);
+        if (record.length > 3) {
+            var p1 = divNode.previousElementSibling;
+            var p2 = p1.previousElementSibling;
+            var p3 = p2.previousElementSibling;
+            p3.setAttribute("class", "hide");
+        }
+    }
+
+    //saveNote()把数据存储到本地存储中
+    function saveNote(picture, name, content, timer) {
+        var record = localStorage['record'];
+        if (record == null || record == "") {
+            record = '[]';
+        }
+        console.log(record);
+        record = JSON.parse(record);
+        var noteObj = {
+            picture: photo.src,
+            name: "郭子仪",
+            divContent: content,
+            timer: timeStr
+        }
+        record.push(noteObj);
+        console.log(record);
+        record = JSON.stringify(record);
+        localStorage['record'] = record;
+    }
+
+    //从本地存储中获取数据，显示到页面上
+    function getNotes() {
+        var record = localStorage['record'];
+        record = JSON.parse(record);
+        if (record.length > 0) {
+            if (record.length < 4) {
+                var i = record.length - 1;
+                comContent(i);
+                var old = document.getElementById("old" + (i + 1));
+                old.setAttribute("class", "hide");
+            }
+            else {
+                var i = record.length - 1;
+                comContent(i);
+            }
+        }
+    }
+
+    // 满三条分一页
+    //     for(var i=0;i<record.length;i++){
+    //         comContent(i);
+    //     }
+    // }
+    // if ((record.length + 2) % 3 == 0) {
+    //     if (record.length > 3) {
+    //         allCommentOld = document.getElementById("allComment" + len);
+    //     }
+    //     else {
+    //         allCommentOld = document.getElementById("allComment1");
+    //     }
+    //     allCommentNew = document.createElement("div");
+    //     allCommentNew.setAttribute("id", "allComment" + (len + 1));
+    //     allCommentNew.setAttribute("class", "allComment");
+    //     allCommentNew.style.display = "flex";
+    //     allCommentOld.style.display = "none";
+    //     comment.insertBefore(allCommentNew, allCommentOld);
+    //     var i = record.length - 1;
+    //     comContent(i);
+    // }
+    // else {
+    //     var i = record.length - 1;
+    //     comContent(i);
+    // }
+
+    myBtn.onclick = function () {
+        if (commentText.value == "") {
+            alert("文本框不能为空");
+        }
+        else {
+            getTime();
+            saveNote(photo.src, "郭子仪", commentText.value, timeStr);
+            getNotes();
+        }
+    }
+
+    //页面加载时获取本地存储的数据
+    window.onload = function () {
+        var record = localStorage['record'];
+        record = JSON.parse(record);
+        if (record.length > 0) {
+            if (record.length < 4) {
+                for (var i = 0; i < record.length; i++) {
+                    comContent(i);
+                    var old = document.getElementById("old" + (i + 1));
+                    old.setAttribute("class", "hide");
+                }
+            }
+            else {
+                for (var i = 2; i < record.length; i++) {
+                    comContent(i);
+                }
+            }
+        }
+        //获取评论条数
+        num.innerHTML = (record.length + 3) + "条评论";
+    }
+
+    //满三条分一页
+    // for (var i = 0; i < record.length; i++) {
+    //     if (i % 3 == 0) {
+    //         allCommentOld = document.getElementById("allComment" + (i + 3) / 3);
+    //         allCommentNew = document.createElement("div");
+    //         allCommentNew.setAttribute("id", "allComment" + ((i + 3) / 3 + 1));
+    //         allCommentNew.setAttribute("class", "allComment");
+    //         allCommentNew.style.display = "flex";
+    //         allCommentOld.style.display = "none";
+    //         comment.insertBefore(allCommentNew, allCommentOld);
+    //     }
+    //     comContent(i);
+    // }
+
+    //分页（评论页数要>4）
+    var pageNum = 1;
+    var record = localStorage['record'];
+    record = JSON.parse(record);
+    var l = parseInt((record.length + 2) / 3);
+    var maxPage = l;
+    var previous = document.getElementById("previous");
+    var next = document.getElementById("next");
+    var page = document.getElementsByClassName("page")[0];
+    var last = document.getElementById("last");
+    last.innerHTML = l;
+
+    previous.onclick = function () {
+        pageNum--;
+        shiftPage();
+        if (pageNum == l) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.removeAttribute("id");
+            var p = currentPage.previousElementSibling;
+            c.setAttribute("id", "currentPage");
+        }
+        if (pageNum > (l - 2) && pageNum < l) {
+            var currentPage = document.getElementById("currentPage");
+            var p = currentPage.previousElementSibling;
+            currentPage.removeAttribute("id");
+            p.setAttribute("id", "currentPage");
+        }
+        if (pageNum == (l - 2)) {
+            var ellipsis = document.getElementById("currentPage");
+            var p = ellipsis.previousElementSibling;
+            ellipsis.removeAttribute("id");
+            ellipsis.setAttribute("id", "ellipsis2");
+            ellipsis.innerHTML = "...";
+            p.setAttribute("id", "currentPage");
+        }
+        if (pageNum > 4 && pageNum < (l - 2)) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.innerHTML = pageNum;
+        }
+        if (pageNum == 4) {
+            var currentPage = document.getElementById("currentPage");
+            var p = currentPage.previousElementSibling;
+            currentPage.innerHTML = "4";
+            p.innerHTML = "3";
+            p.removeAttribute("id");
+        }
+        if (pageNum == 3) {
+            var currentPage = document.getElementById("currentPage");
+            var p = currentPage.previousElementSibling;
+            var ellipsis = document.getElementById("ellipsis2");
+            ellipsis.removeAttribute("id");
+            ellipsis.setAttribute("id", "ellipsis1");
+            currentPage.removeAttribute("id");
+            page.removeChild(currentPage);
+            p.setAttribute("id", "currentPage");
+
+        }
+        if (pageNum < 3 && pageNum > 1) {
+            var currentPage = document.getElementById("currentPage");
+            var p = currentPage.previousElementSibling;
+            currentPage.removeAttribute("id");
+            p.setAttribute("id", "currentPage");
+        }
+        if (pageNum == 1) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.removeAttribute("id");
+            page.firstElementChild.setAttribute("id", "currentPage");
+        }
+    }
+
+    next.onclick = function () {
+        pageNum++;
+        shiftPage();
+        if (pageNum < 4) {
+            var currentPage = document.getElementById("currentPage");
+            var c = currentPage.nextElementSibling;
+            currentPage.removeAttribute("id");
+            c.setAttribute("id", "currentPage");
+        }
+        if (pageNum == 4) {
+            var ellipsis = document.getElementById("ellipsis1");
+            var e = ellipsis.previousElementSibling;
+            ellipsis.removeAttribute("id");
+            ellipsis.setAttribute("id", "currentPage");
+            ellipsis.innerHTML = "4";
+            e.setAttribute("id", "ellipsis1");
+            e.innerHTML = "...";
+            var next_page = document.createElement("li");
+            next_page.setAttribute("id", "ellipsis2");
+            next_page.innerHTML = "...";
+            page.insertBefore(next_page, last);
+        }
+        if (pageNum > 4 && pageNum < (l - 2)) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.innerHTML = pageNum;
+        }
+        if (pageNum == (l - 2)) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.innerHTML = pageNum;
+            var c = currentPage.nextElementSibling;
+            c.innerHTML = pageNum + 1;
+            c.removeAttribute("id");
+        }
+        if (pageNum > (l - 2) && pageNum < l) {
+            var currentPage = document.getElementById("currentPage");
+            var c = currentPage.nextElementSibling;
+            currentPage.removeAttribute("id");
+            c.setAttribute("id", "currentPage");
+        }
+        if (pageNum == l) {
+            var currentPage = document.getElementById("currentPage");
+            currentPage.removeAttribute("id");
+            page.lastElementChild.setAttribute("id", "currentPage");
+        }
+    }
+
+    function shiftPage() {
+        if (pageNum > maxPage) {
+            alert('已经是最后一页!');
+            pageNum = maxPage;
+        }
+        if (pageNum < 1) {
+            alert('已经是第一页!');
+            pageNum = 1;
+        }
+    }
+</script>
+
+</html>
